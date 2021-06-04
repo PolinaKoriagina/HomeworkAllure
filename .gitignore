@@ -1,0 +1,13 @@
+# Allure
+.allure
+
+# Idea
+.idea
+*.iml
+
+# Gradle
+.gradle
+build
+settings.gradle
+gradlew.bat
+gradlew

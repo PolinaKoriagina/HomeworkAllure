@@ -17,15 +17,10 @@ public class Selenide {
     @Test
     public void testIssueSearch(){
         open("https://github.com");
-//        $(".header-search-input").click();
-//        $(".header-search-input").sendKeys("eroshenkoam/allure-example");
-//        $(".header-search-input").submit();
         $("[name='q']").setValue("eroshenkoam/allure-example").pressEnter();
         $("[href=\"/eroshenkoam/allure-example\"]").click();
         $(withText("Issues")).click();
         $(withText("68")).should(Condition.exist);
-
-
     }
 
 }

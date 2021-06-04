@@ -11,22 +11,23 @@ public class WebSteps {
     public void openMainPage(){
         open("https://github.com");
     }
-    @Step("Ищем репозиторий {repository}")
 
+    @Step("Ищем репозиторий {repository}")
     public void searchForRepository(String repository){
         $("[name='q']").setValue("eroshenkoam/allure-example").pressEnter();
     }
-    @Step("Переходим в репозиторий")
 
+    @Step("Переходим в репозиторий")
     public void goToRepository(String repository){
         $("[href=\"/eroshenkoam/allure-example\"]").click();
     }
+
     @Step("Открываем таб Issues в репозитории")
     public void openIssueTab(){
         $(withText("Issues")).click();
     }
-    @Step("Проверяем, что Issue с номером {number} существует ")
 
+    @Step("Проверяем, что Issue с номером {number} существует ")
     public void shouldSeeIssueWithNumber(int number){
         $(withText("68")).should(Condition.exist);
     }

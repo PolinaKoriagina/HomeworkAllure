@@ -14,20 +14,25 @@ public class StepsLambda {
 
     @Test
     public void testIssueSearch(){
+
         step("Открываем главную страницу", () -> {
             open(BASE_URL);
         });
+
         step("Ищем репозиторий", () -> {
             $("[name='q']").setValue(REPOSITORY).pressEnter();
         });
+
         step("Переходим в репозиторий", () -> {
             $("[href=\"/eroshenkoam/allure-example\"]").click();
         });
+
         step("Открываем таб Issues в репозитории", () -> {
             $(withText("Issues")).click();
         });
+
         step("Проверяем, что Issue с номером 68 существует", () -> {
-            $(withText(String.valueOf(ISSUE_NUMBER))).should(Condition.exist);
+            $(withText(String.valueOf(ISSUE_NUMBER))).should(Condition.visible);
         });
     }
 

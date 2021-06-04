@@ -8,13 +8,17 @@ import static io.qameta.allure.Allure.step;
 
 public class StepsLambda {
     //2. Лямбда шаги через step (name, () -> {})
+    private static final String BASE_URL = "https://github.com";
+    private static final String REPOSITORY = "eroshenkoam/allure-example";
+    private static final int ISSUE_NUMBER = 68;
+
     @Test
     public void testIssueSearch(){
         step("Открываем главную страницу", () -> {
-            open("https://github.com");
+            open(BASE_URL);
         });
         step("Ищем репозиторий", () -> {
-            $("[name='q']").setValue("eroshenkoam/allure-example").pressEnter();
+            $("[name='q']").setValue(REPOSITORY).pressEnter();
         });
         step("Переходим в репозиторий", () -> {
             $("[href=\"/eroshenkoam/allure-example\"]").click();
@@ -23,7 +27,7 @@ public class StepsLambda {
             $(withText("Issues")).click();
         });
         step("Проверяем, что Issue с номером 68 существует", () -> {
-            $(withText("68")).should(Condition.exist);
+            $(withText(String.valueOf(ISSUE_NUMBER))).should(Condition.exist);
         });
     }
 
